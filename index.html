@@ -5,10 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Formulário</title>
-        <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
-        <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+        <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
         <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-        <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
         <script>
             Vue.use(VueMask.VueMaskPlugin);
@@ -178,12 +178,12 @@
             },
             methods: {
                 onSubmit() {
-                    if (!this.optionsValidation()) return false;
                     if (!this.nameValidation()) return false;
                     if (!this.cityValidation()) return false;
                     if (!this.companyValidation()) return false;
                     if (!this.emailValidation()) return false;
                     if (!this.numberValidation()) return false;
+                    if (!this.optionsValidation()) return false;
 
                     alert(JSON.stringify(this.form));
                 },
@@ -204,13 +204,14 @@
                     return !!this.stateEmail;
                 },
                 numberValidation: function () {
-                    this.stateNumber = this.form.tel?.length >= 11;
+                    this.stateNumber = this.form.tel?.length >= 14;
                     return !!this.stateNumber;
                 },
                 optionsValidation: function() {
-                    this.stateOptions = this.form.numberSubscribers?.value != null;
+                    this.stateOptions = this.form.numberSubscribers != null;
+                    console.log(this.form.numberSubscribers != null)
                     return !!this.stateOptions;
-                },//corrigir
+                },
             },
         });
     </script>
