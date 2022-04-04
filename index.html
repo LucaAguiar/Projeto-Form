@@ -129,13 +129,15 @@
                     ></b-form-input>
                 </b-form-group>
 
-                <b-form-group id="input-group-6" label-for="input-6" :state="stateOptions">
+                <b-form-group id="input-group-6" label-for="input-6" :state="stateOptions">      
                     <b-form-select
                         id="input-6"
-                        v-model="form.numberAssinants"
-                        :options="numberAssinants"
+                        v-model="form.numberSubscribers"
+                        :options="numberSubscribers"
                         :state="stateOptions"
-                    ></b-form-select>
+                    >
+                    <b-form-select-option :value="null">Quantos assinantes você tem hoje?</b-form-select-option>
+                </b-form-select>
                 </b-form-group>
 
                 <b-button id="submit" type="submit" variant="primary">Receber acesso a demo</b-button>
@@ -154,10 +156,9 @@
                         nameCompany: "",
                         email: "",
                         tel: "",
-                        numberAssinants: null,
+                        numberSubscribers: null,
                     },
-                    numberAssinants: [
-                        { text: "Quantos Assinantes você tem hoje?", value: null },
+                    numberSubscribers: [
                         "0 a 100", 
                         "100 a 200", 
                         "200 a 400",
@@ -207,7 +208,7 @@
                     return !!this.stateNumber;
                 },
                 optionsValidation: function() {
-                    this.stateOptions = this.form.numberAssinants?.value != null;
+                    this.stateOptions = this.form.numberSubscribers?.value != null;
                     return !!this.stateOptions;
                 },//corrigir
             },
