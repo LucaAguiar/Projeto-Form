@@ -44,18 +44,23 @@
             #input-2,
             #input-3,
             #input-4,
-            #input-5,
-            #input-6 {
+            #input-5{
                 margin-bottom: 8px;
                 width: 380px;
                 background-color: #fff;
                 padding: 12px;
                 border-radius: 13px;
-                border: 1px solid #ced4da;
+                border: 2px solid #ced4da;
                 outline: none;
             }
             #input-6 {
                 color: #acacac;
+                width: 380px;
+                background-color: #fff;
+                padding: 12px;
+                border-radius: 13px;
+                border: 2px solid #ced4da;
+                outline: none;
             }
             #submit {
                 width: 380px;
@@ -66,6 +71,7 @@
                 border-bottom: 8px solid rgb(87, 0, 187) !important;
                 border-radius: 13px;
                 font-size: 16px;
+                margin-top: 8px;
             }
             #submit:hover {
                 border-bottom: 8px solid rgb(71, 0, 153) !important;
@@ -74,6 +80,9 @@
                 border-color: rgb(253, 139, 139) !important;
                 background-color: rgba(255, 195, 195, 0.96) !important;
                 border-radius: 13px !important;
+            }
+            .is-valid{
+                border-color: #198754 !important;
             }
         </style>
     </head>
@@ -136,7 +145,6 @@
                         :options="numberSubscribers"
                         :state="stateOptions"
                     >
-                    <b-form-select-option :value="null">Quantos assinantes você tem hoje?</b-form-select-option>
                 </b-form-select>
                 </b-form-group>
 
@@ -159,6 +167,7 @@
                         numberSubscribers: null,
                     },
                     numberSubscribers: [
+                        { text: "Quantos Assinantes você tem hoje?", value: null },
                         "0 a 100", 
                         "100 a 200", 
                         "200 a 400",
@@ -209,7 +218,6 @@
                 },
                 optionsValidation: function() {
                     this.stateOptions = this.form.numberSubscribers != null;
-                    console.log(this.form.numberSubscribers != null)
                     return !!this.stateOptions;
                 },
             },
