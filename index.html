@@ -134,12 +134,18 @@
                 </b-form-group>
 
                 <b-form-group id="input-group-6" label-for="input-6" :state="stateOptions">
-                    <b-form-select id="input-6" v-model="form.numberSubscribers" :options="numberSubscribers" :state="stateOptions" required>
-
+                    <b-form-select
+                        id="input-6"
+                        v-model="form.numberSubscribers"
+                        :options="numberSubscribers"
+                        :state="stateOptions"
+                        required
+                    >
                         <template #first>
-                            <b-form-select-option :value="null" disabled>Quantos assinantes você tem hoje?</b-form-select-option>
+                            <b-form-select-option :value="null" disabled
+                                >Quantos assinantes você tem hoje?</b-form-select-option
+                            >
                         </template>
-
                     </b-form-select>
                 </b-form-group>
 
@@ -191,8 +197,7 @@
                     alert(JSON.stringify(this.form));
                 },
                 nameValidation: function () {
-                    this.stateName = this.form.name?.length >= 4;
-                    return !!this.stateName;
+                    return this.form.name.length > 4 || null;
                 },
                 cityValidation: function () {
                     this.stateCity = this.form.nameCity?.length >= 2;
@@ -213,6 +218,11 @@
                 optionsValidation: function () {
                     this.stateOptions = this.form.numberSubscribers != null;
                     return !!this.stateOptions;
+                },
+            },
+            watch: {
+                "form.name": function () {
+                    this.stateName = this.nameValidation();
                 },
             },
         });
