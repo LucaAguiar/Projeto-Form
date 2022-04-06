@@ -155,7 +155,6 @@
                         v-model="form.numberSubscribers"
                         :options="numberSubscribers"
                         :state="stateOptions"
-                        required
                     >
                         <template #first>
                             <b-form-select-option :value="null" disabled
@@ -203,29 +202,29 @@
             },
             methods: {
                 onSubmit() {
-                    if (!this.nameValidation()) return false;
-                    if (!this.cityValidation()) return false;
-                    if (!this.companyValidation()) return false;
-                    if (!this.emailValidation()) return false;
-                    if (!this.numberValidation()) return false;
-                    if (!this.optionsValidation()) return false;//corrigir
+                    if (!this.nameValidation()) return (this.stateName = false);
+                    if (!this.cityValidation()) return (this.stateCity = false);
+                    if (!this.companyValidation()) return (this.stateCompany = false);
+                    if (!this.emailValidation()) return (this.stateEmail = false);
+                    if (!this.numberValidation()) return (this.stateNumber = false);
+                    if (!this.optionsValidation()) return (this.stateOptions = false);
 
                     alert(JSON.stringify(this.form));
                 },
                 nameValidation: function () {
-                    return this.form.name.length >= 4 || null;
+                    return this.form.name?.length >= 4 || null;
                 },
                 cityValidation: function () {
-                    return this.form.nameCity.length >= 3 || null;
+                    return this.form.nameCity?.length >= 3 || null;
                 },
                 companyValidation: function () {
-                    return this.form.nameCompany.length >= 3 || null;
+                    return this.form.nameCompany?.length >= 3 || null;
                 },
                 emailValidation: function () {
-                    return this.form.email.length >= 12 || null;
+                    return this.form.email?.length >= 12 || null;
                 },
                 numberValidation: function () {
-                    return this.form.tel.length >= 13 || null;
+                    return this.form.tel?.length >= 13 || null;
                 },
                 optionsValidation: function () {
                     this.stateOptions = this.form.numberSubscribers != null;
