@@ -19,7 +19,7 @@
 
             Vue.directive("mask", VueMask.VueMaskDirective);
         </script>
-        <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
 
         <style>
             body {
@@ -221,7 +221,7 @@
                     return this.form.nameCompany?.length >= 3 || null;
                 },
                 emailValidation: function () {
-                    return this.form.email?.length >= 12 || null;
+                    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.form.email) || null;
                 },
                 numberValidation: function () {
                     return this.form.tel?.length >= 13 || null;
