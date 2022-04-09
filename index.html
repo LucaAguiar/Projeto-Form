@@ -235,8 +235,7 @@
                     return this.form.tel?.length >= 13 || null;
                 },
                 optionsValidation: function () {
-                    this.stateOptions = this.form.numberSubscribers != null;
-                    return !!this.stateOptions;
+                    return this.form?.numberSubscribers != null || null;
                 },
             },
             watch: {
@@ -254,6 +253,9 @@
                 },
                 "form.tel": function () {
                     this.stateNumber = this.numberValidation();
+                },
+                "form.numberSubscribers": function () {
+                    this.stateOptions = this.optionsValidation();
                 },
             },
             computed: {
